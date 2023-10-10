@@ -5,26 +5,37 @@ body {
     color: #333;
     margin: 0;
     padding: 0;
+    background-image: url(https://www.cybertalk.org/wp-content/uploads/2021/08/shutterstock_442428001.jpg);
+
+    background-size: cover;
 }
 
-header, footer {
-    background-color: #4CAF50;
+header,
+footer {
+    background-color: #000300;
     color: #fff;
     padding: 20px;
 }
 
-footer{
+footer {
     position: static;
     bottom: 0;
     width: 100%;
+   
 }
 
 footer p {
     text-align: center;
 }
 
-h1,
+h1{
+    color: white;
+    text-align: center;
+    margin-top: 20px;
+}
+
 h2 {
+    color: white;
     margin-top: 20px;
     text-align: center;
 }
@@ -32,15 +43,16 @@ h2 {
 main {
     width: 100%;
     margin: auto;
+    background-image: url();
 }
 
-li{
+li {
     list-style: none;
     display: inline-block;
     padding: 20px;
 }
 
-.container-form{
+.container-form {
     max-width: 50%;
     margin: auto;
 }
@@ -118,17 +130,27 @@ th {
 }
 
 .listado-container {
-    max-width: 70%;
+    max-width: 100%;
+    text-align: center;
+    margin-top: 200px;
+
 }
+
 .boton-container {
     margin-block: 30px;
 }
-a{
+
+a {
     text-decoration: none;
 }
+
 .listado-servicios a {
-    color: #3e8e41;
-    font-size: 20px;
+    color: #000500;
+    font-size: 30px;
+    text-align: center;
+    display: list-item;
+    padding: 8px;
+
 }
 
 .listado-servicios li::marker {
