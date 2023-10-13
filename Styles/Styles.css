@@ -20,7 +20,7 @@ footer {
 }
 
 footer {
-    position: static;
+    position:static;
     bottom:0%;
     width: 100%;
    
@@ -28,6 +28,13 @@ footer {
 
 footer p {
     text-align: center;
+}
+
+#footer-dos {
+    position: absolute;
+    bottom:0%;
+    width: 100%;
+
 }
 
 h1{
