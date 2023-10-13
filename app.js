@@ -54,46 +54,121 @@ const mostrarMedicos = function () {
     })
 }
 
+
+const mostrarPacientes = function () {
+    let pacientes = []
+    let cuerpoTabla = document.getElementById("cuerpo-tabla-pacientes")
+    let localPacientes = localStorage.getItem("pacientes")
+    if (localPacientes) {
+        pacientes = JSON.parse(localPacientes)
+    }
+    pacientes.forEach((paciente) => {
+        let fila = document.createElement("tr")
+        //para crear celda DOM tiene un metodo que es insertCell()
+        let celdaNombres = fila.insertCell()
+        let celdaApellidos = fila.insertCell()
+        let celdaCedula = fila.insertCell()
+        let celdaEdad = fila.insertCell()
+        let celdaTelefono = fila.insertCell()
+        let celdaEspecialidad = fila.insertCell()
+        let celdaMedico = fila.insertCell()
+
+        celdaNombres.textContent = paciente.nombres
+        celdaApellidos.textContent = paciente.apellidos
+        celdaCedula.textContent = paciente.cedula
+        celdaEdad.textContent = paciente.edad
+        celdaTelefono.textContent = paciente.telefono
+        celdaEspecialidad.textContent = paciente.especialidad
+        celdaMedico.textContent = "Sin asignar"
+
+        cuerpoTabla.appendChild(fila)
+    })
+}
+
+
+
 ///Unicamente ejecuta la funcion cuando estamos ubicados en listado-medicos.html
-if(window.location.href.endsWith("listadoMedicos.html")){
+if (window.location.href.endsWith("listadoMedicos.html")) {
     mostrarMedicos()
 }
 
+if (window.location.href.endsWith("listadoPacientes.html")) {
+    mostrarPacientes()
+}
+
 //Unicamente ejecuta el addEventListener cuando estamos ubicados en registro-medicos.html
-if (window.location.href.endsWith("registroMedicos.html")){
+if (window.location.href.endsWith("registroMedicos.html")) {
 
     // El evento para formularioMedicos va a ser de tipo guardar es decir submit
-formularioMedicos.addEventListener("submit", function (evento) {
-    //previene que la página se recargue sin antes hacer la lógica del addEventListener
-    evento.preventDefault()
+    formularioMedicos.addEventListener("submit", function (evento) {
+        //previene que la página se recargue sin antes hacer la lógica del addEventListener
+        evento.preventDefault()
 
-    let valorNombres = nombres.value
-    let valorApellidos = apellidos.value
-    let valorCedula = cedula.value
-    let valorConsultorio = consultorio.value
-    let valorTelefono = telefono.value
-    let valorCorreo = correo.value
-    let valorEspecialidad = especialidad.value
+        let valorNombres = nombres.value
+        let valorApellidos = apellidos.value
+        let valorCedula = cedula.value
+        let valorConsultorio = consultorio.value
+        let valorTelefono = telefono.value
+        let valorCorreo = correo.value
+        let valorEspecialidad = especialidad.value
 
-    const medico = new Persona(valorNombres, valorApellidos, valorCedula, valorTelefono, valorEspecialidad)
-    medico.consultorio = valorConsultorio
-    medico.correo = valorCorreo
+        const medico = new Persona(valorNombres, valorApellidos, valorCedula, valorTelefono, valorEspecialidad)
+        medico.consultorio = valorConsultorio
+        medico.correo = valorCorreo
 
 
 
-    let medicos = []
+        let medicos = []
 
-    let localMedicos = localStorage.getItem("medicos")
-    // Si localMedicos no está vacio lo convierte en objeto para hacer el push
-    if (localMedicos) {
-        medicos = JSON.parse(localMedicos)
-    }
-    medicos.push(medico)
-    localStorage.setItem("medicos", JSON.stringify(medicos))
-    alert("Médico registrado!")
+        let localMedicos = localStorage.getItem("medicos")
+        // Si localMedicos no está vacio lo convierte en objeto para hacer el push
+        if (localMedicos) {
+            medicos = JSON.parse(localMedicos)
+        }
+        medicos.push(medico)
+        localStorage.setItem("medicos", JSON.stringify(medicos))
+        alert("Médico registrado!")
 
-})
+    })
 
 }
 
 
+// PROGRAMACIÓN PARA PACIENTES 
+//Acceso al formulario registro pacientes
+
+if (window.location.href.endsWith("registroPacientes.html")) {
+
+    // El evento para formularioPacientes va a ser de tipo guardar es decir submit
+    formularioPacientes.addEventListener("submit", function (evento) {
+        //previene que la página se recargue sin antes hacer la lógica del addEventListener
+        evento.preventDefault()
+
+        let valorNombres = nombres.value
+        let valorApellidos = apellidos.value
+        let valorCedula = cedula.value
+        let valorEdad = edad.value
+        let valorTelefono = telefono.value
+        let valorEspecialidad = especialidad.value
+
+        const paciente = new Persona(valorNombres, valorApellidos, valorCedula, valorTelefono, valorEspecialidad)
+
+        paciente.edad = valorEdad
+
+
+
+        let pacientes = []
+
+        let localPacientes = localStorage.getItem("pacientes")
+        // Si localPacientes no está vacio lo convierte en objeto para hacer el push
+        if (localPacientes) {
+            pacientes = JSON.parse(localPacientes)
+        }
+        pacientes.push(paciente)
+        // guardar la información de pacientes en el LocalStorage
+        localStorage.setItem("pacientes", JSON.stringify(pacientes))
+        alert("Paciente registrado!")
+
+    })
+
+}
