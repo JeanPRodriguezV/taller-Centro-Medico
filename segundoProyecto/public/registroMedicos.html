@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de médicos </title>
+    <link rel="stylesheet" href="stylesheets/style.css">
+</head>
+
+<body>
+    <header>
+        <H1 id="CentroMedico">CENTRO MÉDICO JEAN RODRÍGUEZ</H1>
+    </header>
+
+    <main>
+        <h2>Registro de médicos</h2>
+        <div class="container-form">
+            <form id="registro-medicos-form" method="post" action="/agregar-medico">
+                <label for="nombres">Nombres <span>*</span></label><br>
+                <input type="text" id="nombres" name="nombres" placeholder="Nombre del médico" required><br>
+                <label for="apellidos">Apellidos <span>*</span></label><br>
+                <input type="text" id="apellidos" name="apellidos" placeholder="Apelliddos del médico" required><br>
+                <label for="cedula">Número de cédula <span>*</span></label><br>
+                <input type="number" id="cedula" name="cedula" placeholder="Ingresa cédula del médico" required><br>
+                <label for="consultorio">Número de consultorio <span>*</span></label><br>
+                <input type="number" id="consultorio" name="consultorio" placeholder="Consultorio"><br>
+                <label for="telefono">Teléfono <span>*</span></label><br>
+                <input type="tel" id="telefono" name="telefono" placeholder="Ingrese número de teléfono" required><br>
+                <label for="correo">Correo <span>*</span></label><br>
+                <input type="email" id="correo" name="correo" placeholder="Ingrese correo" required><br>
+                <label for="">Especialidad <span>*</span></label><br>
+                <select name="especialidad" id="especialidad" required>
+                    <option value="">--- Seleccione una opción---</option>
+                    <option value="Medicina general">Medicina general</option>
+                    <option value="Cardiología">Cardiología</option>
+                    <option value="Medicina interna">Medicina interna</option>
+                    <option value="Dermatología">Dermatología</option>
+                    <option value="Rehabilitación física">Rehabilitación física</option>
+                    <option value="Psicología">Psicología</option>
+                    <option value="Odontología">Odontología</option>
+                    <option value="Radiología">Radiología</option>
+                </select><br>
+                <br>
+
+                <input type="submit" value="Enviar">
+
+
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <h2>Realizado por:</h2>
+        <p>Jean Paul Rodrígez Valencia</p>
+    </footer>
+
+</body>
+
+</html>
