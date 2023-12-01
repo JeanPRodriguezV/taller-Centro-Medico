@@ -1,0 +1,32 @@
+ <header>
+        <H1 id="CentroMedico">CENTRO MÉDICO JEAN RODRÍGUEZ</H1>
+    </header>
+    <main>
+        <h2>Agendamiento de citas</h2>
+        <div class="container-form">
+            <form >
+               
+                <label for="cedula">Número de cédula <span>*</span></label><br>
+                <input type="number" id="cedula" name="cedula" placeholder="Ingresa cédula del paciente" required><br>
+                <label for="fecha_cita">Fecha cita médica <span>*</span></label><br>
+                <input type="number" id="fecha_cita" name="fecha_cita" placeholder="Fecha de la cita"><br>                
+                <label for="medico">Especialista<span>*</span></label><br>
+                <select name="medico" id="medico" required>
+                    <option value="">--- Escoja una opción ---</option>
+                    {{#each resultado}}
+                    <option value="{{cedula}}">{{nombres}} {{apellidos}} </option>
+                    {{/each}}                   
+                </select><br>
+                <br>
+
+                <input type="submit" value="Enviar">
+            </form>
+
+
+        </div>
+    </main>
+
+    <footer>
+        <h2>Realizado por:</h2>
+        <p>Jean Paul Rodrígez Valencia</p>
+    </footer>

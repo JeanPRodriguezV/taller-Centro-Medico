@@ -3,14 +3,30 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const { create } = require('express-handlebars')
+//Modulo para dar formato a las fechas 
+const moment = require('moment')
 
 var indexRouter = require('./routes/index');
 
 var app = express();
 
+//configuración de express con handlebars para crear los helpers
+const hbs = create ({
+  extname: '.hbs',
+ 
+})
+
+// Creación del helper que será una función para formatear fechas
+hbs.handlebars.registerHelper('formatoFecha', function (fecha){
+  return moment(fecha).format('YYYY-MM-DD')
+})
+
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
+app.engine('.hbs', hbs.engine)
 
 app.use(logger('dev'));
 app.use(express.json());
