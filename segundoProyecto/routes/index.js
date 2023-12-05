@@ -33,7 +33,17 @@ router.get('/listadoPacientes', (req,res)=>{
   })
 })
 
-
+// Enrrutamiento para visualizar el listado de citas agendadas
+router.get('/listado-citas', (req, res) => {
+  conexion.query(`SELECT fecha_cita, pacientes.nombres, pacientes.apellidos, pacientes.telefono, medicos.especialidad, medicos.consultorio, medicos.nombres nombresMedico, medicos.apellidos apellidosMedico FROM cita_medica, pacientes, medicos WHERE cedula_medico=medicos.cedula AND cedula_paciente=pacientes.cedula;`, (error, resultado) => {
+    if (error) {
+      console.log('Ocurrió un error en la ejecución', error)
+      res.status(500).send('Error en la ejecución')
+    } else {
+      res.status(200).render('citas', {resultado})
+    }
+  })
+})
 
 
 //Enrrutamiento para agregar un medico a la base de datos 
@@ -102,7 +112,7 @@ router.post('/agregar-cita', (req, res) => {
       console.log(error)
       res.status(500).send('Ocurrio un error en la consulta')
     } else {
-      res.status(200).send('Cita agendada con exito')
+      res.status(200).redirect('/listado-citas')
     }
 
   })

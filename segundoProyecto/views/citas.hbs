@@ -1,0 +1,39 @@
+  <header>
+        <H1 id="CentroMedico">CENTRO MÉDICO JEAN RODRÍGUEZ</H1>
+    </header>
+    <main>
+        <h2>Listado de citas</h2>
+        <table border="solid">
+            <thead>
+                <tr>
+                    <th>Fecha cita</th>
+                    <th>Paciente</th>
+                    <th>Teléfono paciente</th>
+                    <th>Especialidad</th>
+                    <th>Consultorio</th>
+                    <th>Médico</th>
+                                     
+                </tr>
+            </thead>
+            <tbody >
+                <!--Acá se agrega el contenido dinámicamente por medio de handlebars-->
+                {{#each resultado}}
+                <tr>
+                    <td> {{formatoFecha fecha_cita}} </td>
+                    <td> {{nombres}} {{apellidos}} </td>
+                    <td> {{telefono}} </td>
+                    <td> {{especialidad}} </td>
+                    <td> {{consultorio}} </td>
+                    <td> {{nombresMedico}} {{apellidosMedico}} </td>
+                                   
+                </tr>
+                {{/each }}
+            </tbody>
+        </table>
+    </main><br>
+    <a href="../index.html"><input type="button" value="Volver al inicio"></a>
+
+    <footer id="footer-dos">
+        <h2>Realizado por:</h2>
+        <p>Jean Paul Rodrígez Valencia</p>
+    </footer >
